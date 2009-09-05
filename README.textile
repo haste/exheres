@@ -1,0 +1,6 @@
+Currently the following packages exist within this repo:
+
+* dev-util
+** luarocks-1.0.1
+* sys-sound
+** oss-scm: Currently very incomplete.
