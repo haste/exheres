@@ -1,0 +1,15 @@
+# Copyright 2009 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Yet Another FTP Client"
+HOMEPAGE="http://yafc.sourceforge.net/"
+DOWNLOADS="mirror://sourceforge/yafc/${PNV}.tar.gz"
+
+SLOT="0"
+PLATFORM="~x86 ~amd64"
+MYOPTIONS="readline"
+
+DEPENDENCIES="
+    build+run:
+        readline? ( sys-libs/readline )
+"
