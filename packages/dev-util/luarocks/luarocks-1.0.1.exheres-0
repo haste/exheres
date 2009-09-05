@@ -1,0 +1,40 @@
+# Copyright 2009 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require luaforge multilib eutils
+
+SUMMARY="A deployment and management system for Lua modules"
+
+DOWNLOADS="http://download.luaforge.net/${PN}/${PN}/${PV}/${PNV}.tar.gz"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/lua
+        app-arch/unzip
+"
+
+src_configure() {
+    # Fetch the lua version.
+    local tmp="$(lua -e "io.write(_VERSION:match'%s(%S+)')" 2>&1 )"
+
+    ./configure --prefix=/usr --scripts-dir=/usr/bin \
+    --rocks-tree=/usr/lib/lua \
+    --with-lua-include=/usr/include/lua${tmp} --force-config \
+    || die "configure failed"
+}
+
+src_install() {
+    emake DESTDIR="${IMAGE}" install || die "make failed"
+    # This folder is used by LuaRocks, it does however not add any files into
+    # it. We just slam this file into it to prevent the sanity check from
+    # failing our install.
+    touch ${IMAGE}"/usr/lib/lua/.keep"
+}
+
+pkg_postinst() {
+    rm /usr/lib/lua/.keep
+}
