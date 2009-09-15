@@ -1,0 +1,14 @@
+# Copyright 2009 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Easily share a single mouse and keyboard between multiple computers"
+HOMEPAGE="http://code.google.com/p/synergy-plus/"
+DOWNLOADS="http://synergy-plus.googlecode.com/files/${PNV}.tar.gz"
+
+SLOT="0"
+PLATFORM="~x86 ~amd64"
+
+DEPENDENCIES="
+    build+run:
+        x11-libs/libXtst
+"
