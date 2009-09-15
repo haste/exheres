@@ -12,4 +12,6 @@ DEPENDENCIES="
     build+run:
         x11-libs/libX11
         x11-libs/libXtst
+        x11-libs/libXext
+        x11-libs/libXinerama
 "
