@@ -11,7 +11,10 @@ SLOT="0"
 PLATFORM="~x86"
 MYOPTIONS=""
 
-DEPENDENCIES=""
+DEPENDENCIES="
+    build+run:
+        group/audio
+"
 
 src_configure() {
     mkdir "${WORKBASE}/tmp"
