@@ -2,6 +2,9 @@ Currently the following packages exist within this repo:
 
 * dev-util
 ** luarocks-1.0.1
+* media-plugins
+** gst-plugins-bad-0.10.14
+** gst-plugins-good-0.10.16
 * net-ftp
 ** yafc-1.1.1
 * sys-sound
