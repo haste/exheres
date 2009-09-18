@@ -1,0 +1,176 @@
+# Copyright 2008 Saleem Abdulrasool <compnerd@compnerd.org>
+# Distributed under the terms of the GNU General Public License v2
+
+require autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.11 1.10 ] ]
+
+SUMMARY="A set of plugins that need more quality"
+HOMEPAGE="http://gstreamer.freedesktop.org/"
+DOWNLOADS="http://gstreamer.freedesktop.org/src/${PN}/${PNV}.tar.bz2"
+
+LICENCES="LGPL-2"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+MYOPTIONS="
+    doc
+    gstreamer_plugins:
+        alsa
+        apex         [[ description = [ AirPort Express Wireless Support ] ]]
+        ass          [[ description = [ ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle rendering using libass ] ]]
+        dirac dvdnav faad fbdev
+        kate         [[ description = [ Kate (karaoke and text codec) stream encoding/decoding using libkate and rendering using libtiger ] ]]
+        ofa          [[ description = [ MusicIP audio fingerprint calculation using libofa ] ]]
+        neon jpeg2000
+        schroedinger [[ description = [ Dirac video encoding using schroedinger ] ]]
+        sdl soundtouch swfdec vcd
+        vdpau        [[ description = [ Offload parts of video encoding to the GPU using VDPAU ] ]]
+        xvid
+"
+
+DEPENDENCIES="
+    build:
+        dev-util/pkg-config
+        doc? ( dev-doc/gtk-doc[>=1.3] )
+    build+run:
+        media-libs/gstreamer:0.10[>=0.10.24]
+        media-plugins/gst-plugins-base:0.10[>=0.10.24]
+        dev-libs/glib:2[>=2.16]
+        dev-libs/liboil[>=0.3.8]
+        gstreamer_plugins:alsa? ( sys-sound/alsa-lib[>=0.9.1] )
+        gstreamer_plugins:apex? ( dev-libs/openssl )
+        gstreamer_plugins:ass? ( media-libs/libass[>=0.9.4] )
+        gstreamer_plugins:dirac? ( media-libs/dirac[>=0.10] )
+        gstreamer_plugins:dvdnav? ( media-libs/libdvdnav[>=4.1.2] )
+        gstreamer_plugins:faad? ( media-libs/faad2[>=2.0] )
+        gstreamer_plugins:kate? (
+            media-libs/libkate[>=0.1.7]
+            media-libs/libtiger[>=0.3.2]
+        )
+        gstreamer_plugins:ofa? ( media-libs/libofa[>=0.9.3] )
+        gstreamer_plugins:neon? ( net-misc/neon[>=0.26.0&<=0.28.99] )
+        gstreamer_plugins:jpeg2000? ( media-libs/jasper )
+        gstreamer_plugins:schroedinger? ( media-libs/schroedinger[>=1.0.7][-gstreamer(-)] )
+        gstreamer_plugins:sdl? ( media-libs/SDL )
+        gstreamer_plugins:soundtouch? ( media-libs/soundtouch )
+        gstreamer_plugins:swfdec? ( media-libs/swfdec:0.3[>=0.3.6] )
+        gstreamer_plugins:vdpau? ( x11-drivers/nvidia-drivers )
+        gstreamer_plugins:xvid? ( media-libs/xvid )
+"
+
+AT_M4DIR=( 'm4' 'common/m4' )
+
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/${PNV}-allow-disable-kate.patch" )
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( '--enable-experimental'
+'--enable-aacparse'
+'--enable-adpcmdec'
+'--enable-aiffparse'
+'--enable-amrparse'
+'--enable-asfmux'
+'--enable-autoconvert'
+'--enable-bayer'
+'--enable-camerabin'
+'--enable-cdxaparse'
+'--enable-dccp'
+'--enable-debugutils'
+'--enable-dtmf'
+'--enable-dvdspu'
+'--enable-festival'
+'--enable-freeze'
+'--enable-frei0r'
+'--enable-h264parse'
+'--enable-hdvparse'
+'--enable-id3tag'
+'--enable-librfb'
+'--enable-liveadder'
+'--enable-mpegdemux'
+'--enable-mpegtsmux'
+'--enable-mpeg4videoparse'
+'--enable-mpegvideoparse'
+'--enable-mve'
+'--enable-mxf'
+'--enable-nsf'
+'--enable-nuvdemux'
+'--enable-pcapparse'
+'--enable-qtmux'
+'--enable-rawparse'
+'--enable-real'
+'--enable-rtpmux'
+'--enable-scaletempo'
+'--enable-sdp'
+'--enable-selector'
+'--enable-shapewipe'
+'--enable-siren'
+'--enable-speed'
+'--enable-subenc'
+'--enable-stereo'
+'--enable-tta'
+'--enable-valve'
+'--enable-videosignal'
+'--enable-vmnc'
+'--enable-xdgmime'
+
+# Windows Specific
+'--disable-directdraw'
+'--disable-directsound'
+'--disable-wininet'
+'--disable-acm'
+
+# Deprecated sound backends
+'--disable-oss4'
+
+# Unpackaged dependencies
+'--disable-quicktime'
+'--disable-amrwb'
+'--disable-cdaudio'
+'--disable-celt'
+'--disable-dc1394'
+'--disable-directfb'
+'--disable-dts'
+'--disable-divx'
+'--disable-dvb'
+'--disable-faac'
+'--disable-gme'
+'--disable-gsm'
+'--disable-ivorbis'
+'--disable-jack'
+'--disable-ladspa'
+'--disable-libmms'
+'--disable-lv2'
+'--disable-metadata'
+'--disable-mpeg2enc'
+'--disable-mplex'
+'--disable-musepack'
+'--disable-musicbrainz'
+'--disable-mythtv'
+'--disable-nas'
+'--disable-sndfile'
+'--disable-spc'
+'--disable-timidity'
+'--disable-wildmidi'
+
+'--enable-bz2'
+)
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( 'doc gtk-doc'
+'gstreamer_plugins:alsa'
+'gstreamer_plugins:apex apexsink'
+'gstreamer_plugins:ass assrender'
+'gstreamer_plugins:dirac'
+'gstreamer_plugins:dvdnav'
+'gstreamer_plugins:faad'
+'gstreamer_plugins:fbdev'
+'gstreamer_plugins:kate'
+'gstreamer_plugins:ofa'
+'gstreamer_plugins:neon'
+'gstreamer_plugins:jpeg2000 jp2k'
+'gstreamer_plugins:schroedinger schro'
+'gstreamer_plugins:sdl'
+'gstreamer_plugins:soundtouch'
+'gstreamer_plugins:swfdec'
+'gstreamer_plugins:vcd'
+'gstreamer_plugins:vdpau'
+'gstreamer_plugins:xvid'
+)
+
+RESTRICT="test" # requires network
+

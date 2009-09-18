@@ -1,0 +1,137 @@
+# Copyright 2008 Saleem Abdulrasool <compnerd@compnerd.org>
+# Distributed under the terms of the GNU General Purpose License v2
+
+require gnome-2 autotools [ supported_autoconf=[ 2.5 ] supported_automake=[ 1.11 1.10 ] ]
+
+SUMMARY="Set of well maintained plugins for gstreamer"
+HOMEPAGE="http://gstreamer.freedesktop.org/"
+DOWNLOADS="http://gstreamer.freedesktop.org/src/${PN}/${PNV}.tar.bz2"
+
+LICENCES="LGPL-2.1"
+SLOT="0.10"
+PLATFORMS="~amd64 ~x86"
+MYOPTIONS="
+    doc
+    oss
+    udev [[
+        description = [ Enable GUdev-based device detection for V4L2 ]
+        requires = [ gstreamer_plugins: v4l2 ]
+    ]]
+    gstreamer_plugins: aalib cairo flac gconf gtk hal jpeg png pulse soup speex taglib v4l2 xml xv
+"
+
+DEPENDENCIES="
+    build:
+        dev-util/pkg-config[>=0.20]
+        sys-devel/gettext[>=0.17]
+        doc? ( dev-doc/gtk-doc[>=1.3] )
+    build+run:
+        dev-libs/glib:2[>=2.16]
+        dev-libs/liboil[>=0.3.8]
+        media-libs/gstreamer:0.10[>=0.10.24]
+        media-plugins/gst-plugins-base:0.10[>=0.10.24]
+        oss? ( sys-sound/oss )
+        udev? ( sys-fs/udev[>=143][glib] )
+        gstreamer_plugins:aalib? ( media-libs/aalib )
+        gstreamer_plugins:cairo? ( x11-libs/cairo[>=1.0] )
+        gstreamer_plugins:gconf? ( gnome-platform/GConf:2 )
+        gstreamer_plugins:xml? ( dev-libs/libxml2[>=2.4.9] )
+        gstreamer_plugins:xv? ( x11-libs/libXv )
+        gstreamer_plugins:flac? ( media-libs/flac[>=1.1.4] )
+        gstreamer_plugins:gtk? ( x11-libs/gtk+:2[>=2.8] )
+        gstreamer_plugins:hal? ( sys-apps/hal[>=0.5.6]
+                                 sys-apps/dbus[>=0.32] )
+        gstreamer_plugins:jpeg? ( media-libs/jpeg )
+        gstreamer_plugins:png? ( media-libs/libpng[>=1.2] )
+        gstreamer_plugins:pulse? ( media-sound/pulseaudio[>=0.9.13] )
+        gstreamer_plugins:soup? ( gnome-desktop/libsoup:2.4[>=2.26] )
+        gstreamer_plugins:speex? ( media-libs/speex[>=1.1.6] )
+        gstreamer_plugins:taglib? ( media-libs/taglib[>=1.5] )
+"
+
+AT_M4DIR=( 'm4' 'common/m4' )
+DEFAULT_SRC_PREPARE_PATCHES=( "${FILES}/${PNV}-soup-test.patch" )
+
+DEFAULT_SRC_CONFIGURE_PARAMS=( '--enable-experimental'
+# core plugins
+'--enable-alpha'
+'--enable-apetag'
+'--enable-audiofx'
+'--enable-auparse'
+'--enable-autodetect'
+'--enable-avi'
+'--enable-cutter'
+'--enable-debugutils'
+'--enable-deinterlace'
+'--enable-effectv'
+'--enable-equalizer'
+'--enable-flv'
+'--enable-flx'
+'--enable-goom'
+'--enable-goom2k1'
+'--enable-icydemux'
+'--enable-id3demux'
+'--enable-interleave'
+'--enable-law'
+'--enable-level'
+'--enable-matroska'
+'--enable-monoscope'
+'--enable-multifile'
+'--enable-qtdemux'
+'--enable-replaygain'
+'--enable-rtp'
+'--enable-rtpmanager'
+'--enable-rtsp'
+'--enable-smpte'
+'--enable-spectrum'
+'--enable-udp'
+'--enable-videobox'
+'--enable-videocrop'
+'--enable-videofilter'
+'--enable-videomixer'
+'--enable-wavenc'
+'--enable-wavparse'
+'--enable-y4m'
+
+# (de)compression support
+'--enable-bz2'
+'--enable-zlib'
+
+# Windows/Solaris/OS X specific
+'--disable-directsound'
+'--disable-sunaudio'
+'--disable-osx-audio'
+'--disable-osx-video'
+
+# deprecated sound backends
+'--disable-esd'
+
+# unpackaged dependencies
+'--disable-libcaca'
+'--disable-libdv'
+'--disable-dv1394'
+'--disable-shout2'
+'--disable-wavpack'
+)
+
+DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( 'doc gtk-doc'
+# optional plugins
+'gstreamer_plugins:aalib'
+'gstreamer_plugins:cairo'
+'gstreamer_plugins:flac'
+'gstreamer_plugins:gconf' 'gstreamer_plugins:gconf gconftool'
+'gstreamer_plugins:gtk gdk-pixbuf'
+'gstreamer_plugins:hal'
+'gstreamer_plugins:jpeg'
+'gstreamer_plugins:png libpng'
+'gstreamer_plugins:pulse'
+'gstreamer_plugins:soup'
+'gstreamer_plugins:speex'
+'gstreamer_plugins:taglib'
+'gstreamer_plugins:v4l2 gst-v4l2'
+'gstreamer_plugins:xml annodex'
+'gstreamer_plugins:xv x' 'gstreamer_plugins:xv xshm' 'gstreamer_plugins:xv xvideo'
+)
+
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( 'udev gudev' oss)
+
