@@ -1,0 +1,22 @@
+# Copyright 2009 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="PDF viewer based on the poppler pdf rendering library."
+HOMEPAGE="http://zathura.neldoreth.net/"
+DOWNLOADS="http://zathura.neldoreth.net/files/${PNV}.tar.bz2"
+
+LICENCES="zlib"
+SLOT="0"
+PLATFORMS="~amd64 ~x86"
+
+DEPENDENCIES="
+build+run:
+    app-text/poppler[cairo][glib][>=0.10.7]
+    x11-libs/cairo[pdf][>=1.8.8]
+    x11-libs/gtk+:2[>=2.16]"
+
+src_install() {
+    dobin zathura
+    doman zathura.1
+    odoc README
+}
