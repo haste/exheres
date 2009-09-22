@@ -12,12 +12,11 @@ SLOT="0.10"
 PLATFORMS="~amd64 ~x86"
 MYOPTIONS="
     doc
-    oss
     udev [[
         description = [ Enable GUdev-based device detection for V4L2 ]
         requires = [ gstreamer_plugins: v4l2 ]
     ]]
-    gstreamer_plugins: aalib cairo flac gconf gtk hal jpeg png pulse soup speex taglib v4l2 xml xv
+    gstreamer_plugins: aalib cairo flac gconf gtk hal jpeg oss png pulse soup speex taglib v4l2 xml xv
 "
 
 DEPENDENCIES="
@@ -30,7 +29,6 @@ DEPENDENCIES="
         dev-libs/liboil[>=0.3.8]
         media-libs/gstreamer:0.10[>=0.10.24]
         media-plugins/gst-plugins-base:0.10[>=0.10.24]
-        oss? ( sys-sound/oss )
         udev? ( sys-fs/udev[>=143][glib] )
         gstreamer_plugins:aalib? ( media-libs/aalib )
         gstreamer_plugins:cairo? ( x11-libs/cairo[>=1.0] )
@@ -42,6 +40,7 @@ DEPENDENCIES="
         gstreamer_plugins:hal? ( sys-apps/hal[>=0.5.6]
                                  sys-apps/dbus[>=0.32] )
         gstreamer_plugins:jpeg? ( media-libs/jpeg )
+        gstreamer_plugins:oss? ( sys-sound/oss )
         gstreamer_plugins:png? ( media-libs/libpng[>=1.2] )
         gstreamer_plugins:pulse? ( media-sound/pulseaudio[>=0.9.13] )
         gstreamer_plugins:soup? ( gnome-desktop/libsoup:2.4[>=2.26] )
@@ -123,6 +122,7 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( 'doc gtk-doc'
 'gstreamer_plugins:gtk gdk-pixbuf'
 'gstreamer_plugins:hal'
 'gstreamer_plugins:jpeg'
+'gstreamer_plugins:oss'
 'gstreamer_plugins:png libpng'
 'gstreamer_plugins:pulse'
 'gstreamer_plugins:soup'
@@ -133,5 +133,5 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( 'doc gtk-doc'
 'gstreamer_plugins:xv x' 'gstreamer_plugins:xv xshm' 'gstreamer_plugins:xv xvideo'
 )
 
-DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( 'udev gudev' oss)
+DEFAULT_SRC_CONFIGURE_OPTION_WITHS=( 'udev gudev')
 

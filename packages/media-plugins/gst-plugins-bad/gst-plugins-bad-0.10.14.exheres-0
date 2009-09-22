@@ -19,6 +19,7 @@ MYOPTIONS="
         dirac dvdnav faad fbdev
         kate         [[ description = [ Kate (karaoke and text codec) stream encoding/decoding using libkate and rendering using libtiger ] ]]
         ofa          [[ description = [ MusicIP audio fingerprint calculation using libofa ] ]]
+        oss
         neon jpeg2000
         schroedinger [[ description = [ Dirac video encoding using schroedinger ] ]]
         sdl soundtouch swfdec vcd
@@ -46,6 +47,7 @@ DEPENDENCIES="
             media-libs/libtiger[>=0.3.2]
         )
         gstreamer_plugins:ofa? ( media-libs/libofa[>=0.9.3] )
+        gstreamer_plugins:oss ( sys-sound/oss )
         gstreamer_plugins:neon? ( net-misc/neon[>=0.26.0&<=0.28.99] )
         gstreamer_plugins:jpeg2000? ( media-libs/jasper )
         gstreamer_plugins:schroedinger? ( media-libs/schroedinger[>=1.0.7][-gstreamer(-)] )
@@ -115,9 +117,6 @@ DEFAULT_SRC_CONFIGURE_PARAMS=( '--enable-experimental'
 '--disable-wininet'
 '--disable-acm'
 
-# Deprecated sound backends
-'--disable-oss4'
-
 # Unpackaged dependencies
 '--disable-quicktime'
 '--disable-amrwb'
@@ -160,6 +159,7 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( 'doc gtk-doc'
 'gstreamer_plugins:faad'
 'gstreamer_plugins:fbdev'
 'gstreamer_plugins:kate'
+'gstreamer_plygins:oss oss4'
 'gstreamer_plugins:ofa'
 'gstreamer_plugins:neon'
 'gstreamer_plugins:jpeg2000 jp2k'
