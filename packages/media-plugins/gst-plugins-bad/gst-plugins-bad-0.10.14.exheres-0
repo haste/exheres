@@ -47,7 +47,7 @@ DEPENDENCIES="
             media-libs/libtiger[>=0.3.2]
         )
         gstreamer_plugins:ofa? ( media-libs/libofa[>=0.9.3] )
-        gstreamer_plugins:oss ( sys-sound/oss )
+        gstreamer_plugins:oss? ( sys-sound/oss )
         gstreamer_plugins:neon? ( net-misc/neon[>=0.26.0&<=0.28.99] )
         gstreamer_plugins:jpeg2000? ( media-libs/jasper )
         gstreamer_plugins:schroedinger? ( media-libs/schroedinger[>=1.0.7][-gstreamer(-)] )
