@@ -16,13 +16,13 @@ MYOPTIONS="
         alsa
         apex         [[ description = [ AirPort Express Wireless Support ] ]]
         ass          [[ description = [ ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle rendering using libass ] ]]
-        dirac dvdnav faad fbdev
+        dirac dvdnav faad
         kate         [[ description = [ Kate (karaoke and text codec) stream encoding/decoding using libkate and rendering using libtiger ] ]]
         ofa          [[ description = [ MusicIP audio fingerprint calculation using libofa ] ]]
         oss
         neon jpeg2000
         schroedinger [[ description = [ Dirac video encoding using schroedinger ] ]]
-        sdl soundtouch swfdec vcd
+        sdl soundtouch swfdec
         vdpau        [[ description = [ Offload parts of video encoding to the GPU using VDPAU ] ]]
         xvid
 "
@@ -126,7 +126,6 @@ DEFAULT_SRC_CONFIGURE_PARAMS=( '--enable-experimental'
 '--disable-directfb'
 '--disable-dts'
 '--disable-divx'
-'--disable-dvb'
 '--disable-faac'
 '--disable-gme'
 '--disable-gsm'
@@ -148,6 +147,9 @@ DEFAULT_SRC_CONFIGURE_PARAMS=( '--enable-experimental'
 '--disable-wildmidi'
 
 '--enable-bz2'
+'--enable-dvb'
+'--enable-fbdev'
+'--enable-vcd'
 )
 
 DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( 'doc gtk-doc'
@@ -157,7 +159,6 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( 'doc gtk-doc'
 'gstreamer_plugins:dirac'
 'gstreamer_plugins:dvdnav'
 'gstreamer_plugins:faad'
-'gstreamer_plugins:fbdev'
 'gstreamer_plugins:kate'
 'gstreamer_plugins:oss oss4'
 'gstreamer_plugins:ofa'
@@ -167,7 +168,6 @@ DEFAULT_SRC_CONFIGURE_OPTION_ENABLES=( 'doc gtk-doc'
 'gstreamer_plugins:sdl'
 'gstreamer_plugins:soundtouch'
 'gstreamer_plugins:swfdec'
-'gstreamer_plugins:vcd'
 'gstreamer_plugins:vdpau'
 'gstreamer_plugins:xvid'
 )
