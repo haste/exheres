@@ -12,9 +12,8 @@ SLOT="0"
 PLATFORMS="~amd64 ~x86"
 
 DEPENDENCIES="
-    build+run:
-        dev-lang/lua
-        app-arch/unzip
+    dev-lang/lua
+    app-arch/unzip
 "
 
 src_configure() {

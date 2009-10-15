@@ -10,7 +10,6 @@ SLOT="0"
 PLATFORMS="~amd64 ~x86"
 
 DEPENDENCIES="
-build+run:
     app-text/poppler[cairo][glib][>=0.10.7]
     x11-libs/cairo[>=1.8.8]
     x11-libs/gtk+:2[>=2.16]"

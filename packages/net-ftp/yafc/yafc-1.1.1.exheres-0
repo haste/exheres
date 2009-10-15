@@ -10,8 +10,7 @@ PLATFORM="~x86 ~amd64"
 MYOPTIONS="readline"
 
 DEPENDENCIES="
-    build+run:
-        readline? ( sys-libs/readline )
+    readline? ( sys-libs/readline )
 "
 
 DEFAULT_SRC_CONFIGURE_PARAMS=(

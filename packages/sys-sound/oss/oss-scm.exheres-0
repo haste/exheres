@@ -12,8 +12,7 @@ PLATFORM="~x86"
 MYOPTIONS=""
 
 DEPENDENCIES="
-    build+run:
-        group/audio
+    group/audio
 "
 
 src_configure() {

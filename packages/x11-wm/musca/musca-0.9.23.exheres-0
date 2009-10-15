@@ -11,8 +11,8 @@ PLATFORMS="~amd64 ~x86"
 MYOPTIONS=""
 
 DEPENDENCIES="
-    build+run:
-        x11-libs/libX11
+    x11-libs/libX11
+
     run:
         x11-misc/dmenu
 "
