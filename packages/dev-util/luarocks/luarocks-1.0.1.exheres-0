@@ -31,9 +31,5 @@ src_install() {
     # This folder is used by LuaRocks, it does however not add any files into
     # it. We just slam this file into it to prevent the sanity check from
     # failing our install.
-    touch ${IMAGE}"/usr/lib/lua/.keep"
-}
-
-pkg_postinst() {
-    rm /usr/lib/lua/.keep
+    keepdir /usr/lib/lua/
 }
