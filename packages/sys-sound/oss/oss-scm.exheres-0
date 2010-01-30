@@ -15,10 +15,12 @@ DEPENDENCIES="
     group/audio
 "
 
+ECONF_SOURCE="${WORK}"
+
 src_configure() {
     mkdir "${WORKBASE}/tmp"
     cd "${WORKBASE}/tmp"
-    "${WORK}"/configure || die "configure failed"
+   "${WORK}"/configure || die "configure failed"
 }
 
 src_compile() {
