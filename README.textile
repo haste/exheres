@@ -1,7 +1,5 @@
 Currently the following packages exist within this repo:
 
-* app-text
-** zathura-0.0.1
 * dev-util
 ** luarocks-1.0.1
 * net-ftp
