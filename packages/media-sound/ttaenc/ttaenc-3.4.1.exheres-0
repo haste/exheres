@@ -15,6 +15,9 @@ PLATFORM="~x86"
 WORK=${WORKBASE}/${PNV}-src
 
 src_prepare() {
+    # 'Replacing just the -03 flag probably isn't the best solution to this,
+    # but any else would require us to patch the Makefile. The default CFLAGS
+    # are also quite aggressive compared to what people usually use.
     edo sed -i \
     -e "s/gcc/${CC}/g" \
     -e "s/-O3/${CFLAGS}/" \
