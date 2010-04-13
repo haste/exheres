@@ -1,0 +1,27 @@
+# Copyright 2010 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require sourceforge
+
+SUMMARY="The True Audio compressor"
+HOMEPAGE="http://www.true-audio.com/"
+DOWNLOADS="mirror://sourceforge/tta/${PNV}-src.tgz"
+
+DEPENDENCIES=""
+
+SLOT="0"
+PLATFORM="~x86"
+
+WORK=${WORKBASE}/${PNV}-src
+
+src_prepare() {
+    edo sed -i \
+    -e "s/gcc/${CC}/g" \
+    -e "s/-O3/${CFLAGS}/" \
+    Makefile
+}
+
+src_install() {
+    dobin ttaenc
+    dodoc README ChangeLog-${PV}
+}
