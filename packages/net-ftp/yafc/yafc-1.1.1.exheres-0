@@ -6,7 +6,7 @@ HOMEPAGE="http://yafc.sourceforge.net/"
 DOWNLOADS="mirror://sourceforge/yafc/${PNV}.tar.gz"
 
 SLOT="0"
-PLATFORMS="~x86 ~amd64"
+PLATFORMS="~amd64 ~x86"
 MYOPTIONS="readline"
 
 DEPENDENCIES="
