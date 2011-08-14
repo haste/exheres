@@ -1,0 +1,45 @@
+# Copyright 2011 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+# TODO:
+# - Currently doesn't respect CFLAGS.
+# - d8 supports readline, but we don't have an option to enable it.
+# - We force arch=x64.
+
+SCM_REPOSITORY="http://v8.googlecode.com/svn"
+
+require distutils [ python_dep=2.4 ] scm-svn scons
+
+SUMMARY="V8 JavaScript Engine"
+HOMEPAGE="http://code.google.com/p/v8/"
+
+LICENCES="BSD-3"
+SLOT="0"
+PLATFORMS="~amd64"
+BUGS_TO="troeks@gmail.com"
+
+DEPENDENCIES=""
+
+src_compile() {
+    escons \
+        --config=cache \
+        --jobs ${EXJOBS:-1} \
+        library=shared \
+        arch=x64 \
+        .
+}
+
+src_test() {
+    LD_LIBRARY_PATH=${WORK} edo tools/test.py --no-build -j ${EXJOBS:-1}
+}
+
+src_install() {
+    dobin d8
+
+    dolib libv8.so
+    dolib libv8preparser.so
+
+    edo rm -r include/.svn
+    insinto /usr
+    doins -r include
+}
