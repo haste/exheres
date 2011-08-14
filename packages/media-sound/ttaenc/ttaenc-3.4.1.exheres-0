@@ -10,7 +10,7 @@ DOWNLOADS="mirror://sourceforge/tta/${PNV}-src.tgz"
 DEPENDENCIES=""
 
 SLOT="0"
-PLATFORM="~x86"
+PLATFORMS="~amd64 ~x86"
 
 WORK=${WORKBASE}/${PNV}-src
 
