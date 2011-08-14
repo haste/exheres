@@ -6,7 +6,7 @@ HOMEPAGE="http://code.google.com/p/synergy-plus/"
 DOWNLOADS="http://synergy-plus.googlecode.com/files/${PNV}.tar.gz"
 
 SLOT="0"
-PLATFORM="~x86 ~amd64"
+PLATFORMS="~x86 ~amd64"
 
 DEPENDENCIES="
     x11-libs/libX11
