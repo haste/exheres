@@ -1,0 +1,39 @@
+# Copyright 2011 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="git://github.com/jashkenas/coffee-script.git"
+
+require scm-git
+
+SUMMARY="CoffeeScript is a little language that compiles into JavaScript."
+HOMEPAGE="http://jashkenas.github.com/coffee-script/"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+BUGS_TO="troeks@gmail.com"
+
+RESTRICT=""
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/nodejs
+"
+
+src_install() {
+    # Make it use the correct libdir:
+    for i in bin/{cake,coffee} ; do
+        edo sed -i \
+            -e "s|/lib|/${LIBDIR}|" \
+            $i
+    done
+
+    dobin bin/{cake,coffee}
+
+    insinto /usr/${LIBDIR}
+    doins -r lib/coffee-script
+}
+
+src_test() {
+    edo bin/cake test
+}
