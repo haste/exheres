@@ -1,0 +1,56 @@
+# Copyright 2011 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+# TODO:
+#  - Tests are currently not run. Mainly due to several of them binding to
+#  0.0.0.0.
+
+require distutils [ python_dep=2.6 ]
+
+SUMMARY="Evented I/O for V8 JavaScript."
+HOMEPAGE="http://nodejs.org/"
+
+MY_PN=${PN%js}
+
+DOWNLOADS="http://nodejs.org/dist/${MY_PN}-v${PV}.tar.gz"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+BUGS_TO="troeks@gmail.com"
+
+RESTRICT="test"
+
+DEPENDENCIES="
+    build+run:
+        dev-libs/openssl
+        dev-lang/v8
+"
+
+WORK="${WORKBASE}/${MY_PN}-v${PV}"
+
+DEFAULT_SRC_CONFIGURE_PARAMS=(
+    --shared-v8
+
+    # waf-light, really doesn't support any of this.
+    --hates=host
+    --hates=build
+    --hates=mandir
+    --hates=infodir
+    --hates=datadir
+    --hates=docdir
+    --hates=sysconfdir
+    --hates=localstatedir
+    --hates=disable-dependency-tracking
+    --hates=disable-silent-rules
+    --hates=enable-fast-install
+)
+
+src_compile() {
+    emake
+}
+
+src_install() {
+    edo tools/waf-light install --destdir=${IMAGE}
+}
+
