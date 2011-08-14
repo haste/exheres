@@ -4,5 +4,3 @@ Currently the following packages exist within this repo:
 ** ttaenc-3.4.1
 * net-ftp
 ** yafc-1.1.1
-* x11-misc
-** synergy-plus-1.3.4
