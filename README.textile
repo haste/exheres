@@ -1,5 +1,10 @@
 Currently the following packages exist within this repo:
 
+* dev-libs
+** nodejs-0.4.10
+* dev-lang
+** coffee-script-scm
+** v8-scm
 * media-sound
 ** ttaenc-3.4.1
 * net-ftp
