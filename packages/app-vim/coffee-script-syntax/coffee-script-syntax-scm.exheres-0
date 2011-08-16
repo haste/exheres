@@ -1,0 +1,22 @@
+# Copyright 2011 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+require vim-plugin
+
+SUMMARY="CoffeeScript support for vim."
+HOMEPAGE="http://www.vim.org/scripts/script.php?script_id=3590"
+DOWNLOADS=""
+
+SCM_REPOSITORY="git://github.com/kchmck/vim-coffee-script.git"
+
+require scm-git
+
+LICENCES="WTFPL"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+BUGS_TO="troeks@gmail.com"
+
+DEFAULT_SRC_INSTALL_EXCLUDE=(test)
+
