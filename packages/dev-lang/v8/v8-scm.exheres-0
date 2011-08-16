@@ -12,6 +12,7 @@ require distutils [ python_dep=2.4 ] scm-svn scons
 
 SUMMARY="V8 JavaScript Engine"
 HOMEPAGE="http://code.google.com/p/v8/"
+DOWNLOADS=""
 
 LICENCES="BSD-3"
 SLOT="0"
