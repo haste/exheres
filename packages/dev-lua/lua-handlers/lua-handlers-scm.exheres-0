@@ -1,0 +1,32 @@
+# Copyright 2011 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="git://github.com/Neopallium/lua-handlers.git"
+
+require lua scm-git
+
+SUMMARY="Provides a set of async. callback based handlers for working with raw TCP/UDP socket,
+ZeroMQ sockets, or HTTP client/server."
+HOMEPAGE="https://github.com/Neopallium/lua-handlers"
+DOWNLOADS=""
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/lua:=[>=5.1]
+        dev-lua/lua-ev
+        dev-lua/lua-http-parser
+        dev-lua/lua-zmq
+"
+
+BUGS_TO="troeks@gmail.com"
+
+src_install() {
+    lua_install_module -r handler
+    emagicdocs
+}
+
