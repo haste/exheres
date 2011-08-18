@@ -1,0 +1,36 @@
+# Copyright 2011 Trond A Ekseth
+# Distributed under the terms of the GNU General Public License v2
+
+# TODO:
+#  - Tests bind to external IP.
+
+SCM_REPOSITORY="git://github.com/brimworks/lua-http-parser.git"
+
+SCM_EXTERNAL_REFS="http-parser:http_parser"
+SCM_SECONDARY_REPOSITORIES="http_parser"
+SCM_http_parser_REPOSITORY="git://github.com/ry/http-parser.git"
+
+require cmake lua scm-git
+
+SUMMARY="Lua binding to Ryan Dahl's http-parser."
+HOMEPAGE="https://github.com/brimworks/lua-http-parser"
+DOWNLOADS=""
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/lua:=[>=5.1]
+"
+
+RESTRICT="test"
+
+BUGS_TO="troeks@gmail.com"
+
+CMAKE_SRC_CONFIGURE_PARAMS=(
+    -DINSTALL_CMOD="$(lua_get_libdir)"
+)
+
