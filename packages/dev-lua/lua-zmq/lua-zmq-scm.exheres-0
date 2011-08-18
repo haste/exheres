@@ -1,0 +1,30 @@
+# Copyright 2011 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="git://github.com/Neopallium/lua-zmq.git"
+
+require cmake lua scm-git
+
+SUMMARY="Lua zeromq2 binding"
+HOMEPAGE="https://github.com/Neopallium/lua-zmq"
+DOWNLOADS=""
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/lua:=[>=5.1]
+        net-libs/zeromq[>=2.1.0]
+        dev-lua/lua-llthreads
+"
+
+BUGS_TO="troeks@gmail.com"
+
+CMAKE_SRC_CONFIGURE_PARAMS=(
+    -DINSTALL_CMOD="$(lua_get_libdir)"
+    -DINSTALL_LMOD="$(lua_get_sharedir)"
+)
+
