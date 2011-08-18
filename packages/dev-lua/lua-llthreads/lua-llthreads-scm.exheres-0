@@ -1,0 +1,27 @@
+# Copyright 2011 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="git://github.com/Neopallium/lua-llthreads.git"
+
+require cmake lua scm-git
+
+SUMMARY="Low-Level threads for Lua."
+HOMEPAGE="https://github.com/Neopallium/lua-llthreads"
+DOWNLOADS=""
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/lua:=[>=5.1]
+"
+
+BUGS_TO="troeks@gmail.com"
+
+CMAKE_SRC_CONFIGURE_PARAMS=(
+    -DINSTALL_CMOD="$(lua_get_libdir)"
+)
+
