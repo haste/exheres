@@ -1,0 +1,43 @@
+# Copyright 2011 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="git://github.com/brimworks/lua-zlib.git"
+
+require lua scm-git
+
+SUMMARY="Simple streaming interface to zlib for Lua."
+HOMEPAGE="https://github.com/brimworks/lua-zlib"
+DOWNLOADS=""
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/lua:=[>=5.1]
+        sys-libs/zlib
+"
+
+BUGS_TO="troeks@gmail.com"
+
+src_prepare() {
+    default
+
+    edo sed -i \
+        -e "s|-O2|${CFLAGS}|" \
+        -e "s|gcc|${CC}|" \
+        -e "s|llua|llua5.1|" \
+        Makefile
+}
+
+src_compile() {
+    emake linux
+}
+
+src_install() {
+    lua_install_cmodule zlib.so
+    emagicdocs
+}
+
