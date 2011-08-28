@@ -1,5 +1,15 @@
 Currently the following packages exist within this repo:
 
+* app-vim
+** coffee-script-syntax-scm
+* dev-lua
+** lua-zmq-scm
+** lua-http-parser-scm
+** tokyocabinet-lua-1.10
+** lua-ev-scm
+** nixio-neopallium-scm
+** lua-zlib-scm
+** lua-llthreads-scm
 * dev-libs
 ** nodejs-0.4.10
 * dev-lang
