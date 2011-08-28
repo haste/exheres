@@ -1,0 +1,19 @@
+# Copyright 2011 <name>
+# Distributed under the terms of the GNU General Public License v2
+
+SUMMARY="Lua Binding of Tokyo Cabinet"
+HOMEPAGE="http://fallabs.com/tokyocabinet/"
+DOWNLOADS="${HOMEPAGE}/luapkg/${PNV}.tar.gz"
+
+LICENCES="LGPL-2.1"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+DEPENDENCIES="
+    build+run:
+        dev-db/tokyocabinet
+"
+
+BUGS_TO="troeks@gmail.com"
+
