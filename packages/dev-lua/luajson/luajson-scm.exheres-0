@@ -1,0 +1,32 @@
+# Copyright 2011 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+SCM_REPOSITORY="git://github.com/harningt/luajson.git"
+
+require lua scm-git
+
+SUMMARY="JSON parser/encoder for Lua Parses JSON using LPEG."
+HOMEPAGE="https://github.com/harningt/luajson"
+DOWNLOADS=""
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+# Tests require lunit, which we currently don't have an exheres for.
+RESTRICT="test"
+
+DEPENDENCIES="
+    build+run:
+        dev-lang/lua:=[>=5.1]
+        dev-lua/lpeg
+"
+
+BUGS_TO="troeks@gmail.com"
+
+src_install() {
+    lua_install_module -r lua/{json,json.lua}
+    emagicdocs
+}
+
