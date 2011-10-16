@@ -10,6 +10,7 @@ Currently the following packages exist within this repo:
 ** nixio-neopallium-scm
 ** lua-zlib-scm
 ** lua-llthreads-scm
+** lua-iconv-6
 * dev-libs
 ** nodejs-0.4.10
 * dev-lang
