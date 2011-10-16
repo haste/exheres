@@ -1,0 +1,40 @@
+# Copyright 2011 Trond A Ekseth <troeks@gmail.com>
+# Distributed under the terms of the GNU General Public License v2
+
+MY_MAGIC=8023127
+
+require lua
+
+SUMMARY="Lua bindings for POSIX iconv"
+HOMEPAGE="http://ittner.github.com/lua-iconv/"
+DOWNLOADS="https://github.com/ittner/lua-iconv/tarball/${PNV} -> ${PNV}.tar.gz"
+
+LICENCES="MIT"
+SLOT="0"
+PLATFORMS="~amd64"
+MYOPTIONS=""
+
+# The test attempts to use utf8 instead of utf-8, and require extra_encodings.
+RESTRICT="test"
+
+DEPENDENCIES="
+    build:
+        dev-util/pkg-config
+    build+run:
+         dev-lang/lua[>=5.1]
+"
+
+BUGS_TO="troeks@gmail.com"
+
+WORK=${WORKBASE}/ittner-lua-iconv-${MY_MAGIC}
+
+src_prepare() {
+    edo sed -i \
+        -e "s:\(LUAPKG =\).*:\1 lua:" \
+    Makefile
+}
+
+src_install() {
+    lua_install_cmodule iconv.so
+}
+
