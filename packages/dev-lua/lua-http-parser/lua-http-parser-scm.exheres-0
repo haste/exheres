@@ -8,7 +8,7 @@ SCM_REPOSITORY="git://github.com/brimworks/lua-http-parser.git"
 
 SCM_EXTERNAL_REFS="http-parser:http_parser"
 SCM_SECONDARY_REPOSITORIES="http_parser"
-SCM_http_parser_REPOSITORY="git://github.com/ry/http-parser.git"
+SCM_http_parser_REPOSITORY="git://github.com/joyent/http-parser.git"
 
 require cmake lua scm-git
 
